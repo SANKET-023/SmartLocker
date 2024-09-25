@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" type="image/x-icon" href="/static/images/appLogo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-image: url('/static/images/loginBack.png') ; /* Replace with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+
+
+
+        }
+
+        .form-container {
+            width: 700px; /* Adjust width as needed */
+            padding: 20px; /* Adjust padding as needed */
+            margin: 50px auto; /* Center the form container */
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+            backdrop-filter: blur(10px); /* Blur effect for background */
+            -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border */
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 20px; /* Gap between columns */
+        }
+
+        /* Optional: styling the form elements inside the container */
+        .form-container input,
+        .form-container button {
+            width: 100%; /* Make inputs/buttons take full width */
+            padding: 10px; /* Padding inside the inputs/buttons */
+            margin: 10px 0; /* Space between form elements */
+            border-radius: 5px; /* Rounded corners for inputs/buttons */
+            border: none; /* Remove default border */
+        }
+
+        .form-container input:focus,
+        .form-container button:hover {
+            background: rgba(255, 255, 255, 0.4); /* Slightly darker on hover/focus */
+        }
+
+        .text-inputs {
+            grid-column: 1 / span 1; /* Place in the first column */
+        }
+
+        .file-inputs {
+            grid-column: 2 / span 1; /* Place in the second column */
+            display: flex;
+            flex-direction: column;
+            margin-top: 95px;
+            margin-left: 50px;
+        }
+
+
+
+        .form-container button {
+            grid-column: 1 / -1; /* Span both columns */
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="flex h-screen">
+
+    <div class="form-container flex place-content-center">
+        <div class="text-inputs">
+            <h1 class="text-3xl font-semibold mb-4 text-black text-center flex place-content-center">Sign Up</h1>
+            <form method="POST" enctype="multipart/form-data" action="{{ url_for('register') }}">
+                <div class="form-group">
+                    <label for="username">Full Name:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="panCardID">PAN Number:</label>
+                    <input type="text" class="form-control" id="panCardID" name="panCardID" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="pan_file_input">Upload PAN Card:</label>
+                    <input type="file" class="form-control-file " name="pan_file_input" required>
+                </div>
+                <div class="form-group">
+                    <label for="user_photo_file_input">Upload Photo:</label>
+                    <input type="file" class="form-control-file" name="user_photo_file_input" required>
+                </div>
+                <button type="submit" class="btn btn btn-dark max-w-screen-sm">Register</button>
+            </form>
+            <div class="mt-4 text-sm text-gray-600 text-center">
+                <p>Already have an account? <a href="{{ url_for('login') }}" class="text-black hover:underline">Login here</a></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+</body>
+</html>
+

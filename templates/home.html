@@ -1,0 +1,143 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/static/images/appLogo.png">
+
+    <!-- Vendor CSS Files -->
+    <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="/static/assets/css/main.css" rel="stylesheet">
+
+    <!-- Inline CSS for background image -->
+    <style>
+        body {
+            background-image: url('/static/images/backImg2.png') ; /* Replace with your image path */
+
+                background-size: 100% auto; /* Scale down the image to 50% of its original size */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+        }
+        /* Custom styles for overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Adjust the rgba values for different intensities */
+            z-index: -1; /* Make sure the overlay is behind the content */
+        }
+        /* Custom styles for the logout button */
+        .logout-button {
+            border: 2px solid black; /* Clear border */
+            padding: 10px 20px; /* Increase size */
+            font-size: 24px; /* Larger font */
+            border-radius: 8px; /* Rounded corners */
+            color: white; /* Text color */
+            background-color: red; /* Background color */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+        .logout-button:hover {
+            background-color: black; /* Background color on hover */
+            color: white; /* Text color on hover */
+        }
+        /* Custom styles for the other buttons */
+        .button {
+            font-size: 24px; /* Match the font size of the logout button */
+            padding: 10px 20px; /* Match padding of the logout button */
+            border-radius: 8px; /* Match border-radius of the logout button */
+            color: white; /* Text color */
+            background-color: black; /* Background color */
+            text-align: center; /* Center the text */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+        .button:hover {
+            background-color: black; /* Background color on hover */
+            color: white; /* Text color on hover */
+        }
+        /* Custom styles for the logo */
+        .logo {
+            width: 40px; /* Adjust the size of the logo */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- Overlay -->
+<div class="overlay"></div>
+
+<div class="m-6 mx-20">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 rounded-full shadow-sm dark:shadow-gray-800 mx-20 p-2">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-2">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="{{ url_for('static', filename='images/userProfileImg.png') }}" class="h-12" alt="Flowbite Logo" />
+                <span class="self-center text-black dark:text-black text-3xl">{{ user }}</span>
+            </a>
+            <div class="flex items-center space-x-6 rtl:space-x-reverse ml-auto">
+                <!-- Timestamp Container -->
+                <span id="timestamp">
+                    <p>Logged In On: {{ logged_in_time }}</p>
+                </span>
+                <a href="{{url_for('logout')}}" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-xl px-5 py-2.5 me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ">Logout</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+<div class="m-6 flex justify-center p-5">
+    <!-- Profile Container -->
+    <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-4/12 h-96 mx-5"> <!-- Adjusted the vertical position to -40px -->
+        <div class="m-2 flex justify-center">
+            <img src="{{ url_for('static', filename='images/verifiedLogo.png') }}" class="w-1/2" alt="Flowbite Logo" />
+        </div>
+        <div class="mb-14 pt-0 mt-auto flex justify-center">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Documents are Verified </span>
+            <img src="{{ url_for('static', filename='images/verifiedIcon.png') }}" class="h-8 mx-2" alt="Flowbite Logo" />
+        </div>
+    </div>
+
+    <!-- Access Locker Container -->
+    <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-4/12 h-96 mx-5"> <!-- Adjusted the vertical position to -40px -->
+        <div class="m-2 flex justify-center">
+            <img src="{{ url_for('static', filename='images/lockerImg.png') }}" class="w-1/2 mt-8" alt="Flowbite Logo" />
+        </div>
+        <div class="p-6 pt-0 mt-auto flex justify-center">
+            <a href="{{url_for('access_locker')}}" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-2xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Access Locker</a>
+        </div>
+    </div>
+</div>
+
+<!-- Vendor JS Files -->
+<script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/vendor/php-email-form/validate.js"></script>
+<script src="/static/assets/vendor/aos/aos.js"></script>
+<script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="/static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+<!-- Main JS File -->
+<script src="/static/assets/js/main.js"></script>
+
+</body>
+</html>
+
